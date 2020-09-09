@@ -106,6 +106,7 @@ const createPostHarvestForm = () => {
   return main;
 };
 
+//For future reference: an idea to how work with the fetch requests
 // xxx. function creates posts
 // const createPost = (jsonObject) {
 
