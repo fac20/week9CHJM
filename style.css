@@ -1,0 +1,52 @@
+/* Resets */
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  /* ----centers everything */
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+}
+
+label, /* ---colour and font from main */ 
+input,
+button {
+  font: inherit;
+  color: inherit;
+  block: display;
+}
+
+/* variables */
+
+root: .hero-text {
+  margin-top: 5rem;
+}
+
+.navigation {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  margin-top: 0;
+}
+
+.navigation .nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style: none;
+  width: 100%;
+  font-weight: bolder;
+}
+
+/* Mobile first ! */
+
+/* Desktop styles:
+  
+ @media only screen and (min-width: 768px) {
+   
+ }
+ */
