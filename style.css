@@ -14,31 +14,38 @@ main {
 
 label, /* ---colour and font from main */ 
 input,
-button {
-  font: inherit;
+button,
+a {
+  font-family: inherit;
   color: inherit;
-  block: display;
 }
 
 /* variables */
 
 :root {
-    --primary-colour: #81B214;
-    --secondary-colour: #BFDCAE;
+    --primary-colour: hsl(79, 80%, 39%);
+    --secondary-colour: hsl(98, 40%, 77%);
     --font-colour: hsl(169, 54%, 27%);
-    --bg-colour: #F1F1E8;
+    --bg-colour: hsl(60, 24%, 93%);
     --main-font: 'PT Serif', serif;
     --logo-font: 'Homemade Apple', cursive;
-
 }
 
-.body {
-  background:var(--bg-colour);
-  color:var(--main-colour);
+body {
+  background-color:var(--bg-colour);
+  color:var(--font-colour);
+  font-family:var(--main-font);
+}
+
+.logo {
+  font-family:var(--logo-font);
+  font-size: 3em;
 }
 
 .navigation {
-  position: fixed;
+  display: flex;
+  margin: auto;
+  width: 60ch;
   top: 0;
   z-index: 1;
   margin-top: 0;
@@ -47,11 +54,10 @@ button {
 .navigation .nav-links {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   list-style: none;
   width: 100%;
-  font-weight: bolder;
-}
+} 
 
 /* Mobile first ! */
 
