@@ -22,8 +22,19 @@ button {
 
 /* variables */
 
-root: .hero-text {
-  margin-top: 5rem;
+:root {
+    --primary-colour: #81B214;
+    --secondary-colour: #BFDCAE;
+    --font-colour: hsl(169, 54%, 27%);
+    --bg-colour: #F1F1E8;
+    --main-font: 'PT Serif', serif;
+    --logo-font: 'Homemade Apple', cursive;
+
+}
+
+.body {
+  background:var(--bg-colour);
+  color:var(--main-colour);
 }
 
 .navigation {
