@@ -1,26 +1,35 @@
 // 1. import modules
 import h from "./builder-function.js";
 
+const app = document.querySelector("#app");
+const login = document.getElementById("log-in");
+const signUp = document.getElementById("sign-up");
+const seeAll = document.querySelector(".see-all");
+
 // 2. function creates forms (signin/login)
 const createForm = (parameter, routes) => {
-  main.innerHTML = "";
-  const url = "http://urbanharvest.io" + routes;
+  app.innerHTML = "";
+  const url = "https://week7-chjm.herokuapp.com/" + routes;
+
+  // dogs dogs-rest.herokuapp.com/v1/
 
   const title = h("h2", {}, parameter);
   // elements inside the form
-  const emailLabel = h("label", { for: "email" });
-  const email = h(
-    "input",
-    { type: email, id: email, name: email, required },
-    ""
-  );
-  const passwordLabel = h("label", { for: "password" });
-  const password = h(
-    "input",
-    { type: "password", id: "email", name: "email", required },
-    ""
-  );
-  const submitButton = h("input", { type: "submit" }, parameter);
+  const emailLabel = h("label", { for: "email" }, "Email");
+  const email = h("input", {
+    type: "email",
+    id: "email-input",
+    name: "email",
+    required: "",
+  });
+  const passwordLabel = h("label", { for: "password" }, "Password");
+  const password = h("input", {
+    type: "password",
+    id: "password",
+    name: "email",
+    required: "",
+  });
+  const submitButton = h("input", { type: "submit" }, "required");
   // create form with above elements as children
 
   const form = h(
@@ -33,16 +42,19 @@ const createForm = (parameter, routes) => {
     submitButton
   );
 
-  main.append(title, form);
+  app.append(title, form);
 
-  return main;
+  return app;
 };
+
+login.addEventListener("click", () => createForm("login", "login"));
+signUp.addEventListener("click", () => createForm("signup", "signup"));
 
 //3. Create form to post new food
 const createPostHarvestForm = () => {
-  main.innerHTML = "";
+  app.innerHTML = "";
 
-  const url = "http://urbanharvest.io/harvest";
+  const url = "https://week7-chjm.herokuapp.com/harvest";
 
   const harvestTitle = h("h2", {}, "Add a new crop");
   // elements inside the form
@@ -101,9 +113,9 @@ const createPostHarvestForm = () => {
     submitHarvestButton
   );
 
-  main.append(harvestTitle, harvestForm);
+  app.append(harvestTitle, harvestForm);
 
-  return main;
+  return app;
 };
 
 //On button click, getAllHarvest is called
@@ -160,3 +172,7 @@ const displayAllHarvest = (jsonObject) => {
 
   return post;
 };
+
+seeAll.addEventListener("click", () =>
+  getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
+);
