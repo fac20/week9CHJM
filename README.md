@@ -28,6 +28,10 @@ We used:
 - Javascript
 - ES modules
 
+## Wireframe 
+
+
+
 ## Installation
  
  - 
@@ -54,6 +58,24 @@ We used:
 ## Project status
 
 - Code reviewing and debuging
+
+## Known bugs 
+
+- 
+-
+
+### Acceptance Criteria
+
+- [ ] A single-page app (only one HTML file)
+- [ ] Accessible signup/login forms
+- [ ] Token-based authentication (storing token in localStorage)
+- [ ] Form for adding new resources (only for logged in users)
+- [ ] Works well across Chrome, Firefox and Safari/Edge browsers
+
+#### Stretch criteria
+
+- [ ] Buttons to delete existing resources -for logged in users
+- [ ] Form for updating existing resources -for logged in users
 
 ## Authors
   
