@@ -22,12 +22,17 @@ svg{
   height: auto;
 }
 
+.logo-img {
+  height: auto;
+}
+
 label, /* ---colour and font from main */ 
 input,
 button,
 a {
   font-family: inherit;
   color: inherit;
+  text-decoration: inherit;
 }
 
 /* variables */
@@ -55,10 +60,12 @@ body {
 .navigation {
   display: flex;
   margin: auto;
-  width: 60ch;
+  width: 100vw;
   top: 0;
   z-index: 1;
   margin-top: 0;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--font-colour);
 }
 
 .navigation .nav-links {
@@ -70,11 +77,21 @@ body {
   padding: 0;
 } 
 
+li {
+  margin: auto 0;
+  padding: 0.5rem;
+  background-color: var(--secondary-colour)
+}
+
 /* Mobile first ! */
 
-/* Desktop styles:
+/* Desktop styles: */
   
  @media only screen and (min-width: 768px) {
-   
+
+  .navigation{
+    width: 60ch;
+  }
+     
  }
- */
+ 

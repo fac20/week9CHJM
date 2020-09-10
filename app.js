@@ -1,5 +1,6 @@
 // 1. import modules
 import h from "./builder-function.js";
+import navBarChange from "./navbar.js";
 
 const app = document.querySelector("#app");
 const login = document.getElementById("log-in");
@@ -173,6 +174,12 @@ const displayAllHarvest = (jsonObject) => {
   return post;
 };
 
+// nav bar update on logged-in status
+window.onload = navBarChange;
+
+
+
+// display all harvests on click
 seeAll.addEventListener("click", () =>
   getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
 );
