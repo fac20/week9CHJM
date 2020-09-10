@@ -5,7 +5,7 @@ function navBarChange(event){
     if (token){
         //get rid of sign up button on navbar
         let navBar = document.querySelector(".nav-links");
-        let signUpButton = document.querySelector(".sign-up-button");
+        let signUpButton = document.querySelector("#sign-up");
         navBar.removeChild(signUpButton);
 
         //replace login with logout 

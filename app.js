@@ -6,13 +6,14 @@ const app = document.querySelector("#app");
 const login = document.getElementById("log-in");
 const signUp = document.getElementById("sign-up");
 const seeAll = document.querySelector(".see-all");
+const main = document.querySelector("main");
+const homeButton = document.getElementById("home");
 
 // 2. function creates forms (signin/login)
 const createForm = (parameter, routes) => {
-  app.innerHTML = "";
+  main.innerHTML = "";
   const url = "https://week7-chjm.herokuapp.com/" + routes;
 
-  // dogs dogs-rest.herokuapp.com/v1/
 
   const title = h("h2", {}, parameter);
   // elements inside the form
@@ -42,8 +43,8 @@ const createForm = (parameter, routes) => {
     password,
     submitButton
   );
-
-  app.append(title, form);
+    
+  main.append(title, form);
 
   return app;
 };
@@ -124,7 +125,7 @@ const createPostHarvestForm = () => {
 //Return a call to displayAllHarvest which will place them on the page
 
 function getAllHarvest(url) {
-  fetch(url)
+  return fetch(url)
     .then((response) => {
       return response.json();
     })
@@ -135,31 +136,34 @@ function getAllHarvest(url) {
 
 // 4. function creates elements
 const displayAllHarvest = (jsonObject) => {
+  console.log(jsonObject)
   const searchButton = h("input", { type: "button" }, "search");
+    //let post = "";
 
-  for (let data in jsonObject) {
+  jsonObject.forEach( data => {
+    
     const post = h("div", { className: "harvestPost" }, "");
-    const fruit = h("p", {}, `Fruit: ${jsonObject[data.food_type]}`);
-    const taste = h("p", {}, `Taste: ${jsonObject[data.taste]}`);
+    const fruit = h("p", {}, `Fruit: ${data.food_type}`);
+    const taste = h("p", {}, `Taste: ${data.taste}`);
     const harvestTime = h(
       "p",
       {},
-      `Harvest Time: ${jsonObject[data.harvest_time]}`
+      `Harvest Time: ${data.harvest_time}`
     );
-    const location = h("p", {}, `Harvest Time: ${jsonObject[data.location]}`);
-    const date = h("p", {}, `Harvest Time: ${jsonObject[data.date]}`);
-
+    const location = h("p", {}, `Location: ${data.location}`);
+    const date = h("p", {}, `Date: ${data.date}`);
+  
     const deleteButton = h(
-      "input",
+      "button",
       { type: "button", className: "delete-button" },
       "delete"
     );
     const updateButton = h(
-      "input",
+      "button",
       { type: "button", className: "update-button" },
       "edit"
     );
-
+  
     post.append(
       fruit,
       taste,
@@ -169,9 +173,10 @@ const displayAllHarvest = (jsonObject) => {
       deleteButton,
       updateButton
     );
-  }
 
-  return post;
+    app.append(post);
+
+  })
 };
 
 // nav bar update on logged-in status
@@ -183,3 +188,33 @@ window.onload = navBarChange;
 seeAll.addEventListener("click", () =>
   getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
 );
+
+
+const createHome = () => {
+  const homeHTML = `  
+  <section class="image">
+      <embed src="apple.svg" width="250em" height="250em" />
+  
+      <span class="logo"><p>Urban Harvest</p></span>
+  </section>
+  <section class="hero-text">
+      <h1 class="h1-title">Welcome to Urban Harvest</h1>
+      <p class="h1-subtitle">
+        Urban Harvest is a celebration of the overlooked bounty grown in and
+        around our cities. It's a database to help foragers find produce in
+        their neighborhoods.
+      </p>
+      <button class="add-harvest">Add a discovery</button>
+      <button class="search-harvest">Search the field</button>
+      <button class="see-all">See all</button>
+  </section>
+  
+  <div id="app">
+      <!---- stuff goes here! ---->
+  </div>
+  <script src="./app.js" type="module"></script>`
+  main.innerHTML = "";
+  main.innerHTML = homeHTML;
+}
+
+homeButton.onclick = createHome;
