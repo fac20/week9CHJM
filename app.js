@@ -30,7 +30,8 @@ const createForm = (parameter, routes) => {
     name: "email",
     required: "",
   });
-  const submitButton = h("input", { type: "submit" }, "required");
+  const submitButton = h("input", { type: "submit", id: "submitBtn" });
+
   // create form with above elements as children
 
   const form = h(
