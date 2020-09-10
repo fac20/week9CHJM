@@ -13,9 +13,9 @@ main {
   text-align: justify;
 }
 
-svg{
+svg {
   width: 100%;
-  height:auto;
+  height: auto;
 }
 
 .image {
@@ -30,7 +30,7 @@ label, /* ---colour and font from main */
 input,
 button,
 a {
-  font-family: inherit;
+  font-family: var(--logo-font);
   color: inherit;
   text-decoration: inherit;
 }
@@ -38,22 +38,22 @@ a {
 /* variables */
 
 :root {
-    --primary-colour: hsl(79, 80%, 39%);
-    --secondary-colour: hsl(98, 40%, 77%);
-    --font-colour: hsl(169, 54%, 27%);
-    --bg-colour: hsl(60, 24%, 93%);
-    --main-font: 'PT Serif', serif;
-    --logo-font: 'Homemade Apple', cursive;
+  --primary-colour: hsl(79, 80%, 39%);
+  --secondary-colour: hsl(98, 40%, 77%);
+  --font-colour: hsl(169, 54%, 27%);
+  --bg-colour: hsl(60, 24%, 93%);
+  --main-font: "PT Serif", serif;
+  --logo-font: "Homemade Apple", cursive;
 }
 
 body {
-  background-color:var(--bg-colour);
-  color:var(--font-colour);
-  font-family:var(--main-font);
+  background-color: var(--bg-colour);
+  color: var(--font-colour);
+  font-family: var(--main-font);
 }
 
 .logo {
-  font-family:var(--logo-font);
+  font-family: var(--logo-font);
   font-size: 3em;
 }
 
@@ -75,23 +75,28 @@ body {
   list-style: none;
   width: 100%;
   padding: 0;
-} 
+}
 
 li {
   margin: auto 0;
   padding: 0.5rem;
-  background-color: var(--secondary-colour)
+  background-color: var(--secondary-colour);
 }
 
+.harvest-links {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  max-width: 10rem;
+  height: 13rem;
+  margin: auto;
+}
 /* Mobile first ! */
 
 /* Desktop styles: */
-  
- @media only screen and (min-width: 768px) {
 
-  .navigation{
+@media only screen and (min-width: 768px) {
+  .navigation {
     width: 60ch;
   }
-     
- }
- 
+}

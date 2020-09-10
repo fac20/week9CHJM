@@ -177,8 +177,6 @@ const displayAllHarvest = (jsonObject) => {
 // nav bar update on logged-in status
 window.onload = navBarChange;
 
-
-
 // display all harvests on click
 seeAll.addEventListener("click", () =>
   getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
