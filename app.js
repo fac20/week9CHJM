@@ -48,18 +48,14 @@ const createForm = (parameter, routes) => {
           .then((user) => {
             // save the access token in localStorage so the user stays logged in
             window.localStorage.setItem("access_token", user.access_token)
-            const submitMessage = h("h1", {}, `Hello ${user.name}! Click 'HOME' to view, add, adjust or delete your harvest!`);
-            main.innerHTML = "";
-            main.replaceWith(submitMessage);
+            createHome()
           })
         }  else {
           signupSubmit(username, email, password, url)
           .then((user) => {
             console.log(user);
             window.localStorage.setItem("access_token", user.access_token);
-            const submitMessage = h("h1", {}, `Hello ${user.name}! Click 'HOME' to view, add, adjust or delete your harvest!`);
-            main.innerHTML = "";
-            main.replaceWith(submitMessage);
+            createHome()
           });
         }
     }},
@@ -257,6 +253,7 @@ const createHome = () => {
   <script src="./app.js" type="module"></script>`
   main.innerHTML = "";
   main.innerHTML = homeHTML;
+  navBarChange()
 }
 
 homeButton.onclick = createHome;
