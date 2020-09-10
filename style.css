@@ -30,10 +30,17 @@ main {
 
 label, /* ---colour and font from main */ 
 a {
-  font-family: var(--logo-font);
   color: inherit;
   text-decoration: inherit;
   font-size: 1.1em;
+}
+
+label {
+  font-family: var(--main-font);
+}
+
+a {
+  font-family: var(--logo-font);
 }
 
 input {
