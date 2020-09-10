@@ -1,3 +1,4 @@
+/* Mobile first ! */
 /* Variables */
 
 :root {
@@ -151,7 +152,21 @@ form {
   background-color: var(--tertiary-colour);
   border-radius: 5px;
 }
-/* Mobile first ! */
+
+.harvestPost {
+  border-style: double;
+  margin-bottom: 2rem;
+  border-radius: 10%;
+}
+
+.delete-button {
+  margin-right: 2rem;
+}
+
+.delete-button,
+.update-button {
+  margin-bottom: 0.5rem;
+}
 
 /* Desktop styles: */
 
