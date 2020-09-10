@@ -10,10 +10,10 @@ function request( url, options) {
     })
 }
 
-export function loginSubmit(email, password, url) {
+export function loginSubmit(username, password, url) {
     return request(url, {
         method: "POST",
-        body: JSON.stringify({email, password}),
+        body: JSON.stringify({username, password}),
         headers: { "content-type" : "application/json"}
     })
 }
@@ -24,4 +24,19 @@ export function signupSubmit(username, email, password, url) {
         body: JSON.stringify({username, email, password}),
         headers: { "content-type" : "application/json"}
     })
+}
+
+export function changePasswordSubmit(oldPassword, newPassword, url){
+
+    return request(url, {
+        method: "PUT",
+        body: JSON.stringify({oldPassword, newPassword}),
+        headers: { 
+            "content-type" : "application/json",
+            "Authorization": "Bearer " + window.localStorage.getItem("access_token"),
+        }
+    }).then(res => {
+        window.alert(res.message)
+        location.reload();
+    });
 }
