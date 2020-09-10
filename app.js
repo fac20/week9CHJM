@@ -106,23 +106,57 @@ const createPostHarvestForm = () => {
   return main;
 };
 
-//For future reference: an idea to how work with the fetch requests
-// xxx. function creates posts
-// const createPost = (jsonObject) {
+//On button click, getAllHarvest is called
+//Will go to model and pull out all entries
+//Return a call to displayAllHarvest which will place them on the page
 
-//     return post
-// }
+function getAllHarvest(url) {
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((jsonObj) => {
+      return displayAllHarvest(jsonObj);
+    });
+}
 
-// function displayHarvest(url) {
+// 4. function creates elements
+const displayAllHarvest = (jsonObject) => {
+  const searchButton = h("input", { type: "button" }, "search");
 
-// fetch(url).then(
-//     response => {
-//     return    response.json();
-//     }
-// )then(
-//     (jsonObj) => {
-//         return createPost(jsonObj)
-//     }
-// )
+  for (let data in jsonObject) {
+    const post = h("div", { className: "harvestPost" }, "");
+    const fruit = h("p", {}, `Fruit: ${jsonObject[data.food_type]}`);
+    const taste = h("p", {}, `Taste: ${jsonObject[data.taste]}`);
+    const harvestTime = h(
+      "p",
+      {},
+      `Harvest Time: ${jsonObject[data.harvest_time]}`
+    );
+    const location = h("p", {}, `Harvest Time: ${jsonObject[data.location]}`);
+    const date = h("p", {}, `Harvest Time: ${jsonObject[data.date]}`);
 
-// }
+    const deleteButton = h(
+      "input",
+      { type: "button", className: "delete-button" },
+      "delete"
+    );
+    const updateButton = h(
+      "input",
+      { type: "button", className: "update-button" },
+      "edit"
+    );
+
+    post.append(
+      fruit,
+      taste,
+      harvestTime,
+      location,
+      date,
+      deleteButton,
+      updateButton
+    );
+  }
+
+  return post;
+};
