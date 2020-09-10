@@ -1,5 +1,18 @@
-/* Resets */
+/* Variables */
 
+:root {
+  --primary-colour: hsl(79, 80%, 39%);
+  --secondary-colour: hsl(98, 40%, 77%);
+  --tertiary-colour: hsl(100, 31%, 89%);
+  --font-colour: hsl(169, 54%, 27%);
+  --bg-colour: hsl(60, 24%, 93%);
+  --apple-dark-red: #bb2626;
+  --apple-light-red: #eb6148;
+  --main-font: "PT Serif", serif;
+  --logo-font: "Homemade Apple", cursive;
+}
+
+/* Resets */
 * {
   box-sizing: border-box;
 }
@@ -10,51 +23,48 @@ main {
   margin-left: auto;
   margin-right: auto;
   padding: 1.5rem;
-  text-align: justify;
-}
-
-svg{
-  width: 100%;
-  height:auto;
-}
-
-.image {
-  height: auto;
-}
-
-.logo-img {
-  height: auto;
+  text-align: center;
+  line-height: 1.2;
 }
 
 label, /* ---colour and font from main */ 
-input,
-button,
 a {
-  font-family: inherit;
+  font-family: var(--logo-font);
   color: inherit;
   text-decoration: inherit;
+  font-size: 1.1em;
 }
 
-/* variables */
+input {
+  font-family: var(--logo-font);
+  color: inherit;
+  text-decoration: inherit;
+  font-size: 1.1em;
+}
+/* unvisited link */
+a:link {
+  color: var(--font-colour);
+}
 
-:root {
-    --primary-colour: hsl(79, 80%, 39%);
-    --secondary-colour: hsl(98, 40%, 77%);
-    --font-colour: hsl(169, 54%, 27%);
-    --bg-colour: hsl(60, 24%, 93%);
-    --main-font: 'PT Serif', serif;
-    --logo-font: 'Homemade Apple', cursive;
+/* visited link */
+a:visited {
+  color: var(--apple-dark-red);
+}
+
+/* mouse over link */
+a:hover {
+  color: var(--apple-light-red);
+}
+
+/* selected link */
+a:active {
+  color: var(--font-colour);
 }
 
 body {
-  background-color:var(--bg-colour);
-  color:var(--font-colour);
-  font-family:var(--main-font);
-}
-
-.logo {
-  font-family:var(--logo-font);
-  font-size: 3em;
+  background-color: var(--bg-colour);
+  color: var(--font-colour);
+  font-family: var(--main-font);
 }
 
 .navigation {
@@ -75,23 +85,109 @@ body {
   list-style: none;
   width: 100%;
   padding: 0;
-} 
+}
+
+.apple {
+  margin: 0 auto;
+  animation: fallingApple 2.8s;
+}
+
+.logo {
+  font-family: var(--logo-font);
+  font-size: 3em;
+  text-align: center;
+}
+
+.about {
+  animation-name: fadeIn;
+  animation-duration: 5s;
+}
+
+p {
+  margin: auto;
+  text-align: center;
+  min-width: 13rem;
+  padding: 1rem;
+  animation-name: fadeIn;
+  animation-duration: 3s;
+}
 
 li {
   margin: auto 0;
   padding: 0.5rem;
-  background-color: var(--secondary-colour)
+  background-color: var(--secondary-colour);
+  border-radius: 5px;
 }
 
+button {
+  font-family: var(--logo-font);
+  color: inherit;
+  text-decoration: inherit;
+  font-size: 1.1em;
+  background-color: var(--tertiary-colour);
+  border-radius: 5px;
+}
+
+.harvest-links {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  max-width: 15rem;
+  height: 15rem;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  max-width: 15rem;
+  height: 15rem;
+  margin: auto;
+}
+
+/* --- add IDs of all appended buttons here to style them */
+#submitBtn {
+  background-color: var(--tertiary-colour);
+  border-radius: 5px;
+}
 /* Mobile first ! */
 
 /* Desktop styles: */
-  
- @media only screen and (min-width: 768px) {
 
-  .navigation{
+@media only screen and (min-width: 768px) {
+  .navigation {
     width: 60ch;
   }
-     
- }
- 
+}
+
+/* animation */
+
+@keyframes fallingApple {
+  0% {
+    transform: translateY(-400px);
+  }
+  10%,
+  50% {
+    transform: translateY(8px);
+  }
+  80%,
+  100% {
+    transform: translateY(0px);
+  }
+  35% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
