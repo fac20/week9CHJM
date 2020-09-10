@@ -43,7 +43,7 @@ const createForm = (parameter, routes) => {
         const username = event.target.elements.username.value;
         const email = event.target.elements.email.value;
         const password = event.target.password.value;
-        if (parameter === "login") {
+        if (parameter === "Login") {
           loginSubmit(email, password, url).then((user) => {
             // save the access token in localStorage so the user stays logged in
             window.localStorage.setItem("access_token", user.access_token);
@@ -65,7 +65,7 @@ const createForm = (parameter, routes) => {
     submitButton
   );
 
-  if (parameter === "signup") {
+  if (parameter === "Sign Up") {
     const usernameLabel = h("label", { htmlFor: "username" }, "username");
     const username = h("input", {
       type: "text",
@@ -84,7 +84,7 @@ const createForm = (parameter, routes) => {
   return app;
 };
 
-login.addEventListener("click", () => createForm("Login", "login"));
+login.addEventListener("click", () => createForm("Login", "login")); //both params here must be lowercase
 signUp.addEventListener("click", () => createForm("Sign Up", "signup"));
 
 //3. Create form to post new food
@@ -235,7 +235,6 @@ const createHome = () => {
   </section>
 
   <div id="app">
-    <!---- stuff goes here! ---->
   </div>
   <script src="./app.js" type="module"></script>
 </main>
