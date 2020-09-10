@@ -1,5 +1,6 @@
 // 1. import modules
 import h from "./builder-function.js";
+import navBarChange from "./navbar.js";
 
 // 2. function creates forms (signin/login)
 const createForm = (parameter, routes) => {
@@ -160,3 +161,6 @@ const displayAllHarvest = (jsonObject) => {
 
   return post;
 };
+
+// nav bar update on logged-in status
+window.onload = navBarChange;
