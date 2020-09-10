@@ -4,7 +4,7 @@ import navBarChange from "./navbar.js";
 
 const app = document.querySelector("#app");
 const login = document.getElementById("log-in");
-const signUp = document.getElementById("sign-up");
+const signUp = document.getElementById("user-enter");
 const seeAll = document.querySelector(".see-all");
 
 // 2. function creates forms (signin/login)
@@ -48,8 +48,8 @@ const createForm = (parameter, routes) => {
   return app;
 };
 
-login.addEventListener("click", () => createForm("login", "login"));
-signUp.addEventListener("click", () => createForm("signup", "signup"));
+login.addEventListener("click", () => createForm("Login", "login"));
+signUp.addEventListener("click", () => createForm("Sign Up", "signup"));
 
 //3. Create form to post new food
 const createPostHarvestForm = () => {
