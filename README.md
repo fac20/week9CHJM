@@ -33,6 +33,18 @@ We used:
  
  - 
  - 
+ 
+## Works well on
+
+- Chrome
+
+- Firefox
+
+## Not tested on
+
+- Microsoft Edge
+
+- Apple Safari
 
 ## Setup
 
