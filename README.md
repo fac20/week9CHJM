@@ -31,8 +31,8 @@ We used:
 
 ## Installation
  
- - NPM package manager (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
- - PSQL (https://www.postgresql.org/download/)
+ - 
+ - 
 
 ## Setup
 
