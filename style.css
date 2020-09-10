@@ -22,6 +22,10 @@ svg{
   height: auto;
 }
 
+.logo-img {
+  height: auto;
+}
+
 label, /* ---colour and font from main */ 
 input,
 button,
