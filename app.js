@@ -1,6 +1,7 @@
 // 1. import modules
 import h from "./builder-function.js";
 import navBarChange from "./navbar.js";
+import { loginSubmit, signupSubmit } from "./api.js";
 
 const app = document.querySelector("#app");
 const login = document.getElementById("log-in");
@@ -8,6 +9,7 @@ const signUp = document.getElementById("sign-up");
 const seeAll = document.querySelector(".see-all");
 const main = document.querySelector("main");
 const homeButton = document.getElementById("home");
+
 
 // 2. function creates forms (signin/login)
 const createForm = (parameter, routes) => {
@@ -17,32 +19,72 @@ const createForm = (parameter, routes) => {
 
   const title = h("h2", {}, parameter);
   // elements inside the form
-  const emailLabel = h("label", { for: "email" }, "Email");
+  const emailLabel = h("label", { htmlFor: "email" }, "Email");
   const email = h("input", {
     type: "email",
-    id: "email-input",
+    id: "email",
     name: "email",
-    required: "",
+    required: "true",
   });
-  const passwordLabel = h("label", { for: "password" }, "Password");
+  const passwordLabel = h("label", { htmlFor: "password" }, "Password");
   const password = h("input", {
     type: "password",
     id: "password",
-    name: "email",
-    required: "",
+    name: "password",
+    required: "true",
   });
-  const submitButton = h("input", { type: "submit" }, "required");
-  // create form with above elements as children
+  const submitButton = h("input", { type: "submit" });
 
   const form = h(
     "form",
-    { action: url, method: "post" },
+    { 
+      onsubmit: (event) => {
+        event.preventDefault()
+        const username = event.target.elements.username.value;
+        const email = event.target.elements.email.value;
+        const password = event.target.password.value;
+        if (parameter === 'login') {
+          loginSubmit(email, password, url)
+          .then((user) => {
+            // save the access token in localStorage so the user stays logged in
+            window.localStorage.setItem("access_token", user.access_token)
+            const submitMessage = h("h1", {}, `Hello ${user.name}! Click 'HOME' to view, add, adjust or delete your harvest!`);
+            main.innerHTML = "";
+            main.replaceWith(submitMessage);
+          })
+        }  else {
+          signupSubmit(username, email, password, url)
+          .then((user) => {
+            console.log(user);
+            window.localStorage.setItem("access_token", user.access_token);
+            const submitMessage = h("h1", {}, `Hello ${user.name}! Click 'HOME' to view, add, adjust or delete your harvest!`);
+            main.innerHTML = "";
+            main.replaceWith(submitMessage);
+          });
+        }
+    }},
     emailLabel,
     email,
     passwordLabel,
     password,
     submitButton
-  );
+  )
+
+  if (parameter === 'signup') { 
+    const usernameLabel = h("label", { htmlFor: "username" }, "username");
+    const username = h("input", {
+      type: "text",
+      id: "username",
+      name: "username",
+      required: "true",
+    });
+
+    form.insertBefore(usernameLabel, form.childNodes[0]);
+    form.insertBefore(username, form.childNodes[1]);
+
+   }
+  // create form with above elements as children
+
     
   main.append(title, form);
 
@@ -61,35 +103,35 @@ const createPostHarvestForm = () => {
   const harvestTitle = h("h2", {}, "Add a new crop");
   // elements inside the form
 
-  const foodTypeLabel = h("label", { for: "foodType" });
+  const foodTypeLabel = h("label", { htmlFor: "foodType" });
   const foodType = h(
     "input",
     { type: "text", id: "foodType", name: "foodType", required },
     ""
   );
 
-  const tasteLabel = h("label", { for: "taste" });
+  const tasteLabel = h("label", { htmlFor: "taste" });
   const taste = h(
     "input",
     { type: "text", id: "taste", name: "taste", required },
     ""
   );
 
-  const harvestTimeLabel = h("label", { for: "harvestTime" });
+  const harvestTimeLabel = h("label", { htmlFor: "harvestTime" });
   const harvestTime = h(
     "input",
     { type: "text", id: "harvestTime", name: "harvestTime", required },
     ""
   );
 
-  const locationLabel = h("label", { for: "location" });
+  const locationLabel = h("label", { htmlFor: "location" });
   const location = h(
     "input",
     { type: "text", id: "location", name: "location", required },
     ""
   );
 
-  const dateLabel = h("label", { for: "date" });
+  const dateLabel = h("label", { htmlFor: "date" });
   const date = h(
     "input",
     { type: "text", id: "date", name: "date", required },
