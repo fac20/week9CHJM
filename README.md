@@ -22,14 +22,12 @@ We used:
 
 - VScode (live share)
 - Insomnia
-- Whimsical (file structure blueprint)
-- Dbdiagram (schema design)
-- Miro (for crazy 8's) 
+- Miro (blueprint)
 - Git / Github (including CI)
 - Heroku (for deployment)
-- NodeJS / Express
 - PostgreSQL
 - Javascript
+- ES modules
 
 ## Installation
  
