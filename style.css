@@ -10,7 +10,8 @@ main {
   margin-left: auto;
   margin-right: auto;
   padding: 1.5rem;
-  text-align: justify;
+  text-align: center;
+  line-height: 1.2;
 }
 
 svg {
@@ -33,6 +34,7 @@ a {
   font-family: var(--logo-font);
   color: inherit;
   text-decoration: inherit;
+  font-size: 1.1em;
 }
 
 /* variables */
@@ -52,9 +54,8 @@ body {
   font-family: var(--main-font);
 }
 
-.logo {
-  font-family: var(--logo-font);
-  font-size: 3em;
+.apple {
+  margin: 0 auto;
 }
 
 .navigation {
@@ -66,6 +67,19 @@ body {
   margin-top: 0;
   padding: 0.5rem 1.5rem;
   background-color: var(--font-colour);
+}
+
+.logo {
+  font-family: var(--logo-font);
+  font-size: 3em;
+  text-align: center;
+}
+
+p {
+  margin: auto;
+  text-align: center;
+  min-width: 13rem;
+  padding: 1rem;
 }
 
 .navigation .nav-links {
@@ -87,8 +101,8 @@ li {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  max-width: 10rem;
-  height: 13rem;
+  max-width: 15rem;
+  height: 15rem;
   margin: auto;
 }
 /* Mobile first ! */
