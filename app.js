@@ -5,15 +5,17 @@ import { loginSubmit, signupSubmit } from "./api.js";
 
 const app = document.querySelector("#app");
 const login = document.getElementById("log-in");
-const signUp = document.getElementById("user-enter");
+const signUp = document.getElementById("sign-up");
 const seeAll = document.querySelector(".see-all");
 const main = document.querySelector("main");
 const homeButton = document.getElementById("home");
 
-// 2. function creates forms (signup/login)
+
+// 2. function creates forms (signin/login)
 const createForm = (parameter, routes) => {
   main.innerHTML = "";
   const url = "https://week7-chjm.herokuapp.com/" + routes;
+
 
   const title = h("h2", {}, parameter);
   // elements inside the form
@@ -31,41 +33,40 @@ const createForm = (parameter, routes) => {
     name: "password",
     required: "true",
   });
-  const submitButton = h("input", { type: "submit", id: "submitBtn" });
-
-  // create form with above elements as children
+  const submitButton = h("input", { type: "submit" });
 
   const form = h(
     "form",
-    {
+    { 
       onsubmit: (event) => {
-        event.preventDefault();
+        event.preventDefault()
         const username = event.target.elements.username.value;
         const email = event.target.elements.email.value;
         const password = event.target.password.value;
-        if (parameter === "login") {
-          loginSubmit(email, password, url).then((user) => {
+        if (parameter === 'Login') {
+          loginSubmit(email, password, url)
+          .then((user) => {
             // save the access token in localStorage so the user stays logged in
-            window.localStorage.setItem("access_token", user.access_token);
-            createHome();
-          });
-        } else {
-          signupSubmit(username, email, password, url).then((user) => {
+            window.localStorage.setItem("access_token", user.access_token)
+            createHome()
+          })
+        }  else {
+          signupSubmit(username, email, password, url)
+          .then((user) => {
             console.log(user);
             window.localStorage.setItem("access_token", user.access_token);
-            createHome();
+            createHome()
           });
         }
-      },
-    },
+    }},
     emailLabel,
     email,
     passwordLabel,
     password,
     submitButton
-  );
+  )
 
-  if (parameter === "signup") {
+  if (parameter === 'Sign Up') { 
     const usernameLabel = h("label", { htmlFor: "username" }, "username");
     const username = h("input", {
       type: "text",
@@ -76,15 +77,17 @@ const createForm = (parameter, routes) => {
 
     form.insertBefore(usernameLabel, form.childNodes[0]);
     form.insertBefore(username, form.childNodes[1]);
-  }
+
+   }
   // create form with above elements as children
 
+    
   main.append(title, form);
 
   return app;
 };
 
-login.addEventListener("click", () => createForm("Login", "login"));
+login.addEventListener("click", () => createForm("Log In", "login"));
 signUp.addEventListener("click", () => createForm("Sign Up", "signup"));
 
 //3. Create form to post new food
@@ -171,18 +174,25 @@ function getAllHarvest(url) {
 
 // 4. function creates elements
 const displayAllHarvest = (jsonObject) => {
-  console.log(jsonObject);
+  app.innerHTML = "";
+  console.log(jsonObject)
   const searchButton = h("input", { type: "button" }, "search");
-  //let post = "";
+    //let post = "";
 
-  jsonObject.forEach((data) => {
+
+  jsonObject.forEach(data => {
+    
     const post = h("div", { className: "harvestPost" }, "");
     const fruit = h("p", {}, `Fruit: ${data.food_type}`);
     const taste = h("p", {}, `Taste: ${data.taste}`);
-    const harvestTime = h("p", {}, `Harvest Time: ${data.harvest_time}`);
+    const harvestTime = h(
+      "p",
+      {},
+      `Harvest Time: ${data.harvest_time}`
+    );
     const location = h("p", {}, `Location: ${data.location}`);
     const date = h("p", {}, `Date: ${data.date}`);
-
+  
     const deleteButton = h(
       "button",
       { type: "button", className: "delete-button" },
@@ -193,7 +203,7 @@ const displayAllHarvest = (jsonObject) => {
       { type: "button", className: "update-button" },
       "edit"
     );
-
+  
     post.append(
       fruit,
       taste,
@@ -206,42 +216,50 @@ const displayAllHarvest = (jsonObject) => {
 
     app.append(post);
   });
-};
+
+  }
+
 
 // nav bar update on logged-in status
 window.onload = navBarChange;
+
+
 
 // display all harvests on click
 seeAll.addEventListener("click", () =>
   getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
 );
 
+
 const createHome = () => {
   const homeHTML = `  
-  <section class="image">
-      <embed src="apple.svg" width="250em" height="250em" />
-  
-      <span class="logo"><p>Urban Harvest</p></span>
+  <embed src="apple.svg" class="apple" width="250em" height="250em" />
+  <span class="logo"><p>Urban Harvest</p></span>
+  <section class="about">
+    <p class="h1-subtitle">
+      Urban Harvest is a celebration of the overlooked bounty grown in and
+      around our cities. It's a database to help foragers find produce in
+      their neighborhoods.
+    </p>
   </section>
-  <section class="hero-text">
-      <h1 class="h1-title">Welcome to Urban Harvest</h1>
-      <p class="h1-subtitle">
-        Urban Harvest is a celebration of the overlooked bounty grown in and
-        around our cities. It's a database to help foragers find produce in
-        their neighborhoods.
-      </p>
-      <button class="add-harvest">Add a discovery</button>
-      <button class="search-harvest">Search the field</button>
-      <button class="see-all">See all</button>
+  <section class="harvest-links">
+    <button class="add-harvest">Add a discovery</button>
+    <button class="search-harvest">Search the field</button>
+    <button class="see-all">See all</button>
   </section>
-  
+
   <div id="app">
-      <!---- stuff goes here! ---->
+    <!---- stuff goes here! ---->
   </div>
-  <script src="./app.js" type="module"></script>`;
+  <script src="./app.js" type="module"></script>
+  `
   main.innerHTML = "";
   main.innerHTML = homeHTML;
-  navBarChange();
-};
-
+  console.log(seeAll);
+  seeAll.addEventListener("click", () =>
+    getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
+  );
+  
+  navBarChange()
+}
 homeButton.onclick = createHome;
