@@ -1,5 +1,4 @@
-# week9CHJM
-# SPA for 'URBAN HARVEST' RESTapi
+# Single page application (SPA) for 'URBAN HARVEST' RESTapi
 
 ## Table of contents
 * [Project aim](#The-projects-aim)
@@ -12,7 +11,7 @@
 
 ## The project aim
 
-Create a single page application for RESTapi which allows users to request data about available fruits, herbs or vegetables to harvest in urbanized areas (for example London).
+Create a SPA for RESTapi which allows users to request data about available fruits, herbs or vegetables to harvest in urbanized areas (for example London).
 The SPA would allow users to request all available harvests as well as filter them by types (for example apples, pears, basil etc.).
 We also wanted authorised users to be able to update information about harvests aswell as delete them if the data is not correct or relavant anymore.
 
