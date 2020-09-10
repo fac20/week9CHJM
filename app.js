@@ -10,7 +10,7 @@ const seeAll = document.querySelector(".see-all");
 const main = document.querySelector("main");
 const homeButton = document.getElementById("home");
 
-// 2. function creates forms (signup/login)
+// 2. function creates forms (signin/login)
 const createForm = (parameter, routes) => {
   main.innerHTML = "";
   const url = "https://week7-chjm.herokuapp.com/" + routes;
@@ -31,9 +31,7 @@ const createForm = (parameter, routes) => {
     name: "password",
     required: "true",
   });
-  const submitButton = h("input", { type: "submit", id: "submitBtn" });
-
-  // create form with above elements as children
+  const submitButton = h("input", { type: "submit" });
 
   const form = h(
     "form",
@@ -171,6 +169,7 @@ function getAllHarvest(url) {
 
 // 4. function creates elements
 const displayAllHarvest = (jsonObject) => {
+  app.innerHTML = "";
   console.log(jsonObject);
   const searchButton = h("input", { type: "button" }, "search");
   //let post = "";
@@ -241,7 +240,11 @@ const createHome = () => {
   `;
   main.innerHTML = "";
   main.innerHTML = homeHTML;
+  console.log(seeAll);
+  seeAll.addEventListener("click", () =>
+    getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
+  );
+
   navBarChange();
 };
-
 homeButton.onclick = createHome;
