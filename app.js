@@ -3,25 +3,25 @@ import h from "./builder-function.js";
 import navBarChange from "./navbar.js";
 import { loginSubmit, signupSubmit } from "./api.js";
 
-const app = document.querySelector("#app");
+let app = document.querySelector("#app");
 const login = document.getElementById("log-in");
 const signUp = document.getElementById("sign-up");
-const seeAll = document.querySelector(".see-all");
+let seeAll = document.querySelector(".see-all");
 const main = document.querySelector("main");
 const homeButton = document.getElementById("home");
 
-// 2. function creates forms (signin/login)
+// 2. function creates forms (signup/login)
 const createForm = (parameter, routes) => {
   main.innerHTML = "";
   const url = "https://week7-chjm.herokuapp.com/" + routes;
 
   const title = h("h2", {}, parameter);
   // elements inside the form
-  const emailLabel = h("label", { htmlFor: "email" }, "Email");
-  const email = h("input", {
-    type: "email",
-    id: "email",
-    name: "email",
+  const usernameLabel = h("label", { htmlFor: "username" }, "Username");
+  const username = h("input", {
+    type: "text",
+    id: "username",
+    name: "username",
     required: "true",
   });
   const passwordLabel = h("label", { htmlFor: "password" }, "Password");
@@ -39,41 +39,40 @@ const createForm = (parameter, routes) => {
       onsubmit: (event) => {
         event.preventDefault();
         const username = event.target.elements.username.value;
-        const email = event.target.elements.email.value;
         const password = event.target.password.value;
         if (parameter === "Login") {
-          loginSubmit(email, password, url).then((user) => {
+          loginSubmit(username, password, url).then((user) => {
             // save the access token in localStorage so the user stays logged in
             window.localStorage.setItem("access_token", user.access_token);
             createHome();
           });
         } else {
+          const email = event.target.elements.email.value;
           signupSubmit(username, email, password, url).then((user) => {
-            console.log(user);
             window.localStorage.setItem("access_token", user.access_token);
             createHome();
           });
         }
       },
     },
-    emailLabel,
-    email,
+    usernameLabel,
+    username,
     passwordLabel,
     password,
     submitButton
   );
 
   if (parameter === "Sign Up") {
-    const usernameLabel = h("label", { htmlFor: "username" }, "username");
-    const username = h("input", {
-      type: "text",
-      id: "username",
-      name: "username",
+    const emailLabel = h("label", { htmlFor: "email" }, "Email address");
+    const email = h("input", {
+      type: "email",
+      id: "email",
+      name: "email",
       required: "true",
     });
 
-    form.insertBefore(usernameLabel, form.childNodes[0]);
-    form.insertBefore(username, form.childNodes[1]);
+    form.insertBefore(emailLabel, form.childNodes[0]);
+    form.insertBefore(email, form.childNodes[1]);
   }
   // create form with above elements as children
 
@@ -170,7 +169,6 @@ function getAllHarvest(url) {
 // 4. function creates elements
 const displayAllHarvest = (jsonObject) => {
   app.innerHTML = "";
-  console.log(jsonObject);
   const searchButton = h("input", { type: "button" }, "search");
   //let post = "";
 
@@ -240,7 +238,8 @@ const createHome = () => {
   `;
   main.innerHTML = "";
   main.innerHTML = homeHTML;
-  console.log(seeAll);
+  seeAll = document.querySelector(".see-all");
+  app = document.querySelector("#app");
   seeAll.addEventListener("click", () =>
     getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
   );
