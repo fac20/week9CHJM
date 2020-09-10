@@ -5,7 +5,7 @@ import { loginSubmit, signupSubmit } from "./api.js";
 
 const app = document.querySelector("#app");
 const login = document.getElementById("log-in");
-const signUp = document.getElementById("user-enter");
+const signUp = document.getElementById("sign-up");
 const seeAll = document.querySelector(".see-all");
 const main = document.querySelector("main");
 const homeButton = document.getElementById("home");
@@ -218,27 +218,28 @@ seeAll.addEventListener("click", () =>
 
 const createHome = () => {
   const homeHTML = `  
-  <section class="image">
-      <embed src="apple.svg" width="250em" height="250em" />
-  
-      <span class="logo"><p>Urban Harvest</p></span>
+  <main>
+  <embed src="apple.svg" class="apple" width="250em" height="250em" />
+  <span class="logo"><p>Urban Harvest</p></span>
+  <section class="about">
+    <p class="h1-subtitle">
+      Urban Harvest is a celebration of the overlooked bounty grown in and
+      around our cities. It's a database to help foragers find produce in
+      their neighborhoods.
+    </p>
   </section>
-  <section class="hero-text">
-      <h1 class="h1-title">Welcome to Urban Harvest</h1>
-      <p class="h1-subtitle">
-        Urban Harvest is a celebration of the overlooked bounty grown in and
-        around our cities. It's a database to help foragers find produce in
-        their neighborhoods.
-      </p>
-      <button class="add-harvest">Add a discovery</button>
-      <button class="search-harvest">Search the field</button>
-      <button class="see-all">See all</button>
+  <section class="harvest-links">
+    <button class="add-harvest">Add a discovery</button>
+    <button class="search-harvest">Search the field</button>
+    <button class="see-all">See all</button>
   </section>
-  
+
   <div id="app">
-      <!---- stuff goes here! ---->
+    <!---- stuff goes here! ---->
   </div>
-  <script src="./app.js" type="module"></script>`;
+  <script src="./app.js" type="module"></script>
+</main>
+  `;
   main.innerHTML = "";
   main.innerHTML = homeHTML;
   navBarChange();
