@@ -4,7 +4,6 @@
 * [Project aim](#The-projects-aim)
 * [Technologies](#Technologies)
 * [Wireframe](#Wireframe)
-* [Setup](#setup)
 * [Project Status](#Project-status)
 * [Known Bugs](#Known-bugs)
 * [Acceptance Criteria](#Acceptance-criteria)
@@ -41,8 +40,8 @@ We used:
 
 ## Installation
  
- - 
- - 
+ - :carrot::star: No need! just head to https://urbanharvest-chjm-wk9.netlify.app/ to start browsing! :star::carrot:
+ - Try to change your password and log back in using your new password!
  
 ## Works well on
 
@@ -56,20 +55,14 @@ We used:
 
 - Apple Safari
 
-## Setup
-
-1.
-2.
-3.
-
 ## Project status
 
 - Code reviewing and debuging
 
 ## Known bugs 
 
-- 
--
+- "Search the Field" and "Add a Discovery" buttons are not yet functional.
+- Unable to edit or delete entries
 
 ## Acceptance Criteria
 
@@ -86,9 +79,12 @@ We used:
 
 ## Authors
   
-  FAC20 Group - week9CHJM
-
-	Trish, Jennifer, Josh, Rihards
+  _FAC20 Group - week9CHJM_
+  
+  Josh - Scrum facilitator
+  Jennifer - Design
+  Trish - Deployment
+  Rihards - Quality
 	
 ## Project Presentation
 
