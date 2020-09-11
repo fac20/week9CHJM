@@ -3,8 +3,11 @@
 ## Table of contents
 * [Project aim](#The-projects-aim)
 * [Technologies](#Technologies)
+* [Wireframe](#Wireframe)
 * [Setup](#setup)
 * [Project Status](#Project-status)
+* [Known Bugs](#Known-bugs)
+* [Acceptance Criteria](#Acceptance-criteria)
 * [Authors](#Authors)
 * [Project Presentation](#Project-presentation)
 
@@ -15,7 +18,7 @@ Create a SPA for RESTapi which allows users to request data about available frui
 The SPA would allow users to request all available harvests as well as filter them by types (for example apples, pears, basil etc.).
 We also wanted authorised users to be able to update information about harvests aswell as delete them if the data is not correct or relavant anymore.
 
-## Technologies
+## Technologies 
 
 We used: 
 
@@ -24,13 +27,17 @@ We used:
 - Miro (blueprint)
 - Git / Github (including CI)
 - Heroku (for deployment)
+- Netlify
 - PostgreSQL
 - Javascript
 - ES modules
+- Colorhunt.co : colour inspo
+- SVGRepo.com : SVG outline 
+- SVG Minify : SVG compression
 
 ## Wireframe 
 
-
+[](https://miro.com/app/board/o9J_klqCevs=/) 
 
 ## Installation
  
@@ -64,7 +71,7 @@ We used:
 - 
 -
 
-### Acceptance Criteria
+## Acceptance Criteria
 
 - [ ] A single-page app (only one HTML file)
 - [ ] Accessible signup/login forms
@@ -72,7 +79,7 @@ We used:
 - [ ] Form for adding new resources (only for logged in users)
 - [ ] Works well across Chrome, Firefox and Safari/Edge browsers
 
-#### Stretch criteria
+## Stretch criteria
 
 - [ ] Buttons to delete existing resources -for logged in users
 - [ ] Form for updating existing resources -for logged in users
