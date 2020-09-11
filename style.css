@@ -9,6 +9,7 @@
   --bg-colour: hsl(60, 24%, 93%);
   --apple-dark-red: #bb2626;
   --apple-light-red: #eb6148;
+  --disabled-colour: hsl(0, 0%, 37%);
   --main-font: "PT Serif", serif;
   --logo-font: "Homemade Apple", cursive;
 }
@@ -175,6 +176,17 @@ form {
 .update-button {
   margin-bottom: 0.5rem;
   
+}
+
+.delete-button:disabled,
+.update-button:disabled,
+.add-harvest:disabled{
+  background-color: var(--disabled-colour);
+  color: var(--tertiary-colour);
+}
+
+.add-crop-title {
+  margin-bottom: 5rem;
 }
 
 /* Desktop styles: */

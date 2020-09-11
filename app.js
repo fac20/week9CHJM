@@ -1,14 +1,16 @@
 // 1. import modules
 import h from "./builder-function.js";
 import navBarChange from "./navbar.js";
-import { loginSubmit, signupSubmit } from "./api.js";
+import { loginSubmit, signupSubmit, addHarvest } from "./api.js";
+import { authorisationFunction } from "./auhorisation.js"
 
-let app = document.querySelector("#app");
 const login = document.getElementById("log-in");
 const signUp = document.getElementById("sign-up");
-let seeAll = document.querySelector(".see-all");
 const main = document.querySelector("main");
 const homeButton = document.getElementById("home");
+let app = document.querySelector("#app");
+let seeAll = document.querySelector(".see-all");
+let addHarvestButton = document.querySelector(".add-harvest");
 
 // 2. function creates forms (signup/login)
 const createForm = (parameter, routes) => {
@@ -85,55 +87,65 @@ login.addEventListener("click", () => createForm("Login", "login")); //both para
 signUp.addEventListener("click", () => createForm("Sign Up", "signup"));
 
 //3. Create form to post new food
-const createPostHarvestForm = () => {
+export const addHarvestFunction = () => {
   app.innerHTML = "";
 
   const url = "https://week7-chjm.herokuapp.com/harvest";
 
-  const harvestTitle = h("h2", {}, "Add a new crop");
+  const harvestTitle = h("h2", {className: "add-crop-title"}, "Add a new crop");
   // elements inside the form
 
-  const foodTypeLabel = h("label", { htmlFor: "foodType" });
+  const foodTypeLabel = h("label", { htmlFor: "foodType" }, "Food Type");
   const foodType = h(
     "input",
-    { type: "text", id: "foodType", name: "foodType", required },
+    { type: "text", id: "foodType", name: "foodType", required: "true" },
     ""
   );
 
-  const tasteLabel = h("label", { htmlFor: "taste" });
+  const tasteLabel = h("label", { htmlFor: "taste" }, "Taste");
   const taste = h(
     "input",
-    { type: "text", id: "taste", name: "taste", required },
+    { type: "text", id: "taste", name: "taste", required: "true" },
     ""
   );
 
-  const harvestTimeLabel = h("label", { htmlFor: "harvestTime" });
+  const harvestTimeLabel = h("label", { htmlFor: "harvestTime" }, "Harvest Time");
   const harvestTime = h(
     "input",
-    { type: "text", id: "harvestTime", name: "harvestTime", required },
+    { type: "text", id: "harvestTime", name: "harvestTime", required: "true" },
     ""
   );
 
-  const locationLabel = h("label", { htmlFor: "location" });
+  const locationLabel = h("label", { htmlFor: "location" }, "Location");
   const location = h(
     "input",
-    { type: "text", id: "location", name: "location", required },
+    { type: "text", id: "location", name: "location", required: "true" },
     ""
   );
 
-  const dateLabel = h("label", { htmlFor: "date" });
+  const dateLabel = h("label", { htmlFor: "date" }, "Date");
   const date = h(
     "input",
-    { type: "text", id: "date", name: "date", required },
+    { type: "text", id: "date", name: "date", required: "true" },
     ""
   );
 
-  const submitHarvestButton = h("input", { type: "submit" }, "Add");
+  const submitHarvestButton = h("input", { type: "submit", }, "Add");
   // create form with above elements as children
 
   const harvestForm = h(
     "form",
-    { action: url, method: "post" },
+    { 
+      onsubmit: (event) => {
+        event.preventDefault();
+        const foodType = event.target.elements.foodType.value;
+        const taste = event.target.elements.taste.value;
+        const harvestTime = event.target.elements.harvestTime.value;
+        const location = event.target.elements.location.value;
+        const date = event.target.elements.date.value;
+        addHarvest(foodType, taste, harvestTime, location, date, url);
+      }
+     },
     foodTypeLabel,
     foodType,
     tasteLabel,
@@ -191,6 +203,7 @@ const displayAllHarvest = (jsonObject) => {
       "edit"
     );
 
+    
     post.append(
       fruit,
       taste,
@@ -199,10 +212,10 @@ const displayAllHarvest = (jsonObject) => {
       date,
       deleteButton,
       updateButton
-    );
-
-    app.append(post);
-  });
+      );
+      
+      app.append(post);
+    });
 };
 
 // nav bar update on logged-in status
@@ -244,6 +257,10 @@ const createHome = () => {
     getAllHarvest("https://week7-chjm.herokuapp.com/harvest")
   );
 
+ 
+  authorisationFunction();
   navBarChange();
 };
+
 homeButton.onclick = createHome;
+authorisationFunction();
