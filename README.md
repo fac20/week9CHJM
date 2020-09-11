@@ -1,5 +1,8 @@
 # Single page application (SPA) for 'URBAN HARVEST' RESTapi
 
+<img src="https://user-images.githubusercontent.com/38657014/92894082-2e347580-f412-11ea-81f7-fd14222fbcf8.png" width="250">
+
+
 ## Table of contents
 * [Project aim](#The-projects-aim)
 * [Technologies](#Technologies)
