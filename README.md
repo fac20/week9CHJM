@@ -36,7 +36,9 @@ We used:
 
 ## Wireframe 
 
-[](https://miro.com/app/board/o9J_klqCevs=/) 
+https://miro.com/app/board/o9J_klqCevs=/
+
+
 
 ## Installation
  
