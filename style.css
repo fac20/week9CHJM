@@ -45,10 +45,14 @@ a {
 }
 
 input {
-  font-family: var(--logo-font);
+  font-family: var(--main-font);
   color: inherit;
   text-decoration: inherit;
   font-size: 1.1em;
+}
+
+input[type="submit"]{
+  font-family: var(--logo-font)
 }
 /* unvisited link */
 a:link {
