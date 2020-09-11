@@ -41,16 +41,22 @@ export function changePasswordSubmit(oldPassword, newPassword, url){
     });
 }
 
-export function addHarvest(foodType, taste, harvestTime, locations, date, url) {
+export function addHarvest(food_type, taste, harvest_time, location, date, url) {
+    
+    console.log("url: ", url)
+    console.log("token: ", window.localStorage.getItem("access_token"));
+
+    console.log("elements: ", food_type, taste, harvest_time, location, date);
+
     return request(url, {
         method: "POST",
-        body: JSON.stringify({ foodType, taste, harvestTime, locations, date }),
+        body: JSON.stringify({ food_type, taste, harvest_time, location, date }),
         headers: {
             "content-type": "application/json",
             "Authorization": "Bearer " + window.localStorage.getItem("access_token")
         }
     }).then(res => {
         window.alert(res.message);
-        location.reload();
+        window.location.reload();
     })
 }
