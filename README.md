@@ -93,5 +93,5 @@ https://miro.com/app/board/o9J_klqCevs=/
 	
 ## Project Presentation
 
-TBC
+[hackmd](https://hackmd.io/-sEghiUcRRqky3uf24lUBg?both)
 
